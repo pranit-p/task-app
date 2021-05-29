@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
+      - name: log untrusted output
+        run: |
+          echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
+          echo "untrusted output"
+          echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
 
       - name: Authorizing Github action
         with:
