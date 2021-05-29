@@ -16,6 +16,7 @@ jobs:
       - name: install github pages dependencies
         run: |
           npm install --save gh-pages
+          git remote add origin https://github.com/pranit-p/task-app.git
           npm run deploy
       - name: Deploy app on GitHub Pages
         uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
