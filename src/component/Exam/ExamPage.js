@@ -21,6 +21,10 @@ const ExamPage = () => {
         </Modal.Header>
         <Modal.Body>
           <Alert variant="success">
+            <Alert.Heading>Become Best English Speaker</Alert.Heading>
+            <p>I want to become Best English Speaker</p>
+          </Alert>
+          <Alert variant="success">
             <Alert.Heading>Complete Docker Course</Alert.Heading>
             <p>
               I want to complete docker course on interleap.co This Course is
