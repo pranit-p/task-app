@@ -13,9 +13,13 @@ jobs:
     steps:
       - name: copy repo
         uses: actions/checkout@v2
-
+      - name: install github pages dependencies
+        run: |
+          npm install --save gh-pages
+          npm run deploy
       - name: Deploy app on GitHub Pages
         uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+
       - name: pull request commentor module
         uses: dessant/reaction-comments@v2
         with:
@@ -26,12 +30,10 @@ jobs:
       - name: Install NPM dependancies
         run: |
           npm install
-
       - name: Build Android Release
         run: |
           chmod +x ./gradlew
           cd android && ./gradlew assembleRelease
-
       - name: Upload App On android path
         uses: actions/upload-artifact@v1
         with:
