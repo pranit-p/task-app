@@ -18,4 +18,4 @@ jobs:
         uses: oleksiyrudenko/gha-git-credentials@v1
 
       - name: Doploy to GitHub Pages
-        uses: pranit-p/deploy-to-github-pages@v1.1
+        uses: amitsingh-007/deploy-to-github-pages@v1.1
