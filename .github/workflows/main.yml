@@ -60,5 +60,5 @@ jobs:
       with:
         region: us-east-1
         bucket: elasticbeanstalk-us-east-1-953714778736
-        source: './'
+        source: 'src/'
         target: build
