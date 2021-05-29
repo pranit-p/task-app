@@ -1,0 +1,60 @@
+name: App-check
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: copy repo
+        uses: actions/checkout@v2
+      - name: Find out React app bundle size for android and IOS
+        uses: shwetsolanki/react-native-bundle-size@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ios-entry-file: "index.ios.js"
+          android-entry-file: "index.android.js"
+          include-assets: "true"
+          include-source-maps: "true"
+      - name: Deploy app on GitHub Pages
+        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+      - name: pull request commentor module
+        uses: dessant/reaction-comments@v2
+        with:
+          github-token: ${{ github.token }}
+          exempt-issue-labels: "Make sure your all code will run successfully because this code directly go on server"
+          process-only: "prs"
+
+      - name: Install NPM dependancies
+        run: |
+          npm install
+
+      - name: Build Android Release
+        run: |
+          chmod +x ./gradlew
+          cd android && ./gradlew assembleRelease
+
+      - name: Upload App On android path
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-release.apk
+          path: android/app/build/outputs/apk/release/
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy On Aws s3
+        uses: and-cru/actions-s3-static-upload@v12
+        with:
+          milliseconds: 500
+          s3-bucket-name: elasticbeanstalk-us-east-1-953714778736
+          folder: build
