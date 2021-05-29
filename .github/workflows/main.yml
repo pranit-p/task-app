@@ -13,5 +13,5 @@ jobs:
         uses: actions/checkout@v2
       - name: run essesntial commands
         run: |
-          npm install gh-pages — save-dev
+          npm install gh-pages --save-dev
           npm run deploy
