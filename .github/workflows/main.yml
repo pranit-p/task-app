@@ -13,14 +13,7 @@ jobs:
     steps:
       - name: copy repo
         uses: actions/checkout@v2
-      - name: Find out React app bundle size for android and IOS
-        uses: shwetsolanki/react-native-bundle-size@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ios-entry-file: "index.ios.js"
-          android-entry-file: "index.android.js"
-          include-assets: "true"
-          include-source-maps: "true"
+
       - name: Deploy app on GitHub Pages
         uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
       - name: pull request commentor module
