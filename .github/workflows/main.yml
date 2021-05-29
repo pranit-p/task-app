@@ -1,23 +1,21 @@
-name: App-check
+name: Deploy to Github Pages
 
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+on: push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: copy repo
-        uses: actions/checkout@v2
-      - name: install github pages dependencies
-        run: |
-          npm install --save gh-pages
-          npm run deploy
-      - name: Deploy app on GitHub Pages
-        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+  deploy:
+    name: Deploying to Github Pages
 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Authorizing Github action
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+        uses: oleksiyrudenko/gha-git-credentials@v1
+
+      - name: Doploy to GitHub Pages
+        uses: pranit-p/deploy-to-github-pages@v1.1
