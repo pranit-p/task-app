@@ -51,14 +51,13 @@ const ExamPage = () => {
             </p>
           </Alert>
           <Alert variant="success">
-            <Alert.Heading>Complete AWS Course</Alert.Heading>
-            <p>I want to complete AWS Course on Udemy.</p>
+            <Alert.Heading>Hands On  in AWS</Alert.Heading>
+            <p>I want to Hands On  in AWS.</p>
           </Alert>
           <Alert variant="success">
-            <Alert.Heading>Complete Terrafrunt Learning</Alert.Heading>
+            <Alert.Heading>Hands On in  Terragrunt</Alert.Heading>
             <p>
-              I want to complete Terragrunt documentation course and practice it
-              very well. That's really helpful in DevOps
+              TERRAGRUNT is very helpful to keep your terraform code dry
             </p>
           </Alert>
           <Alert variant="success">
@@ -73,6 +72,15 @@ const ExamPage = () => {
             <Alert.Heading>Hands on In Github Action</Alert.Heading>
             <p>I want to complete Nodejs course on Udemy</p>
           </Alert>
+            <Alert variant="success">
+            <Alert.Heading>Complete Technical Document Writer Course</Alert.Heading>
+            <p>https://developers.google.com/tech-writing
+                Complete This COurse
+            
+            </p>
+          </Alert>
+    
+      
         </Modal.Body>
       </Modal>
     </div>
